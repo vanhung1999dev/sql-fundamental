@@ -1,5 +1,14 @@
 # 🔥 What GROUP BY Really Does Internally
 
+## ✅ Rule: In a GROUP BY or GROUPING SETS query
+
+#### You can only SELECT:
+- Columns that are part of the grouping key (i.e., the columns in the GROUP BY / GROUPING SETS)
+- Aggregate functions (SUM, COUNT, AVG, MIN, MAX, etc.)
+
+#### You cannot select arbitrary columns that are not in the grouping key or aggregated.
+- Doing so would be ambiguous: the database doesn’t know which value to show for each group
+
 ```sql
 SELECT department, COUNT(*)
 FROM employees
